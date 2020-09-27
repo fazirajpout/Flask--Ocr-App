@@ -1,0 +1,30 @@
+﻿{% extends "layout.html" %}
+
+{% block title %}Extract Text{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+      <div class="col">
+
+          <h1>Image TO Text Extractor</h1>
+          <hr>
+
+          <form action="{{url_for('uploads')}}" method="POST" enctype="multipart/form-data">
+
+              <div class="form-group">
+                  <label>Select image</label>
+                  <div class="custom-file">
+                      <input type="file" class="form-control-label" name="file" required>
+                  </div>
+              </div>
+              <input type="submit" class="btn btn-primary" value="Extract Text" required>
+          </form>
+          <div class="form-group purple-border">
+              <textarea class="form-control" id="exampleFormControlTextarea4" rows="10">{{data}}</textarea>
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,70 @@
+﻿{%extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+    <div class="media">
+        <div class="media-body">
+            <h2 class="account-heading">{{current_user.firstName +" "+ current_user.secondName}}</h2>
+            <p class="text-secondary">EMAIL: {{current_user.email}}</p>
+            <p class="text-secondary"> DOB : {{current_user.date}}</p>
+            <p class="text-secondary"> Account Updated on : {{current_user.today}}</p>
+        </div>
+    </div>
+    <!-- FORM HERE -->
+</div>
+<div class="content-section">
+    <form method="POST" action="">
+        {{form.hidden_tag()}}
+        <fieldset>
+            <legend class="border-bottom-mb-4">
+                Account Info
+            </legend>
+            <div class="form-group">
+                {{form.firstName.label(class="form-control-label")}}
+                {% if form.firstName.errors %}
+                {{form.firstName(class="form-control form-control-lg is invalid")}}
+                <div class="invalid-feedbak">
+                    {% for error in form.firstName.errors %}
+                    <span>{{error}}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{form.firstName(class="form-control form-control-lg")}}
+                {%endif%}
+            </div>
+            <div class="form-group">
+                {{form.secondName.label(class="form-control-label")}}
+                {% if form.secondName.errors %}
+                {{form.secondName(class="form-control form-control-lg is invalid")}}
+                <div class="invalid-feedbak">
+                    {% for error in form.secondName.errors %}
+                    <span>{{error}}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{form.secondName(class="form-control form-control-lg")}}
+                {%endif%}
+            </div>
+            <div class="form-group" id="date">
+                {{form.date.label(class="form=control-label")}}
+                {{form.date(class="form-control form-control-lg")}}
+            </div>
+            <div class="form-group">
+                {{form.email.label(class="form=control-label")}}
+                {% if form.email.errors %}
+                {{form.email(class="form-control form-control-lg is invalid")}}
+                <div class="invalid-feedbak">
+                    {% for error in form.email.errors %}
+                    <span>{{error}}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{form.email(class="form-control form-control-lg") }}
+                {%endif%}
+            </div>
+        </fieldset>
+        <div class="form-group ml-2">
+            {{form.submit(class= "btn btn-outline-info")}}
+        </div>
+    </form>
+</div>
+{% endblock content %}
